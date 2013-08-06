@@ -12,9 +12,11 @@ class TweetController < ApplicationController
   end
 
   def update
+    
   end
 
   def index
+
   end
 
   def destroy
