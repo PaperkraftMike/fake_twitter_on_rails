@@ -1,0 +1,18 @@
+%h1
+  =@user.user_name
+
+%h3
+  Notifications
+
+%h3
+  Tweets
+-@user.tweets.each do |tweet|
+  =tweet.text
+  %br
+  =tweet.created_at.striftime("%B %d, %Y at %I:%M %p")
+
+%h3 
+  New Tweet
+=form_for Tweet.new, :url => new_user_tweet_path do |f|
+  =f.text_area :text
+  =f.submit
