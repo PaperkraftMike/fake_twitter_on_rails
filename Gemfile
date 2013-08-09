@@ -7,7 +7,8 @@ gem 'rails', '4.0.0'
 gem 'sqlite3'
 gem 'haml'
 gem 'haml-rails'
-gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'bcrypt-ruby', :require => "bcrypt"
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
