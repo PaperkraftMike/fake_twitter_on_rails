@@ -3,4 +3,9 @@ FakeTwitterOnRails::Application.routes.draw do
   resources :user do 
     resources :tweets 
   end
+
+  get "log_in" => "sessions#new"
+  resources :users
+  resources :sessions
+
 end

@@ -13,6 +13,6 @@ something
 
 %h3 
   New Tweet
-=form_for Tweet.new, :url => new_user_tweet_path do |f|
-  =f.text_area :text
-  =f.submit
+  =form_for Tweet.new, :url => new_user_tweet_path(params[:user_id]) do |f|
+    =f.text_area :text
+    =f.submit
