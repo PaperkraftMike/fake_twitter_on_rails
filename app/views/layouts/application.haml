@@ -5,6 +5,17 @@
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body
-  Welcome to Fake Twitter using Rails!!
-  = yield
+  .col-lg-offset-4
+    .containter
+      %body
+      %br
+        %ul.nav.nav-pills
+          %li.active
+            %a{:href => "#"} Home
+          %li
+            %a{:href => "#"} Profile
+          %li
+            %a{:href => "#"} About
+          %li
+            %a{:href => "#"} Friends
+      = yield

@@ -9,6 +9,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'bcrypt-ruby', :require => "bcrypt"
 
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
