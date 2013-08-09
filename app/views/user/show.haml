@@ -8,10 +8,12 @@
 -@user.tweets.each do |tweet|
   =tweet.text
   %br
-  =tweet.created_at.striftime("%B %d, %Y at %I:%M %p")
+  =tweet.created_at.strftime("%B %d, %Y at %I:%M %p")
+  %br
+  %br
 
 %h3 
   New Tweet
-=form_for Tweet.new, :url => new_user_tweet_path do |f|
+=form_for Tweet.new, :url => user_tweet_index_path(@user) do |f|
   =f.text_area :text
   =f.submit
