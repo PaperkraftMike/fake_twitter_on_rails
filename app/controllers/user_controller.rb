@@ -10,7 +10,7 @@ class UserController < ApplicationController
     else
       flash[:notice] = "There was a problem creating your account"
     end
-    redirect_to root_path
+    redirect_to user_path(@user)
   end
 
   def edit 

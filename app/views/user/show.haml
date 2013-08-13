@@ -14,12 +14,6 @@
 
 %h3 
   New Tweet
-<<<<<<< HEAD
-  =form_for Tweet.new, :url => new_user_tweet_path(params[:user_id]) do |f|
+  =form_for Tweet.new, :url => user_tweet_index_path(@user) do |f|
     =f.text_area :text
     =f.submit
-=======
-=form_for Tweet.new, :url => user_tweet_index_path(@user) do |f|
-  =f.text_area :text
-  =f.submit
->>>>>>> c0e2d2b30e192dec3e17c8be4a2aacaac13af6a6
