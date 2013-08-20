@@ -1,16 +1,18 @@
 class UserController < ApplicationController
   def new
-
+    @user = User.new
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
+      @user = current_user
       flash[:notice] = "Your account was created!"
+      redirect_to user_path(@user)
     else
       flash[:notice] = "There was a problem creating your account"
+      redirect_to new_user_path
     end
-    redirect_to user_path(@user)
   end
 
   def edit 
@@ -40,6 +42,7 @@ class UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @following = Following.new
   end
 
   def index
@@ -50,7 +53,7 @@ class UserController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name)
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :bio, :user_name, :city, :state)
   end
 
 end

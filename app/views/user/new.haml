@@ -1,4 +1,13 @@
 %h1 Sign Up For Fake Twitter using Rails
-=form_for User.new, :url => "/user" do |f|
+=form_for @user, :url => user_index_path do |f|
+  -if @user.errors.any? 
+    .error_messages
+      %h2 Form is invalid
+      %ul
+        - for message in @user.errors.full_messages
+          %li
+            =message
   =render "form", {f: f}
+
+
 
