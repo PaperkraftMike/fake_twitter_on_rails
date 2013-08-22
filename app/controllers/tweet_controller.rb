@@ -5,7 +5,7 @@ class TweetController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @tweet = Tweet.new(:text => tweet_params)
+    @tweet = Tweet.new(tweet_params)
       if @tweet.save && @user.tweets << @tweet
         flash[:notice] = "Your tweet was successfully saved!"
       else
@@ -36,6 +36,6 @@ class TweetController < ApplicationController
 
   private
   def tweet_params
-    params.require(:tweet).require(:text)
+    params.require(:tweet).permit(:text)
   end
 end

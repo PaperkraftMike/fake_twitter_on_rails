@@ -1,4 +1,4 @@
-class FollowingsController
+class FollowingsController < ApplicationController
   def index
   end
 
@@ -6,10 +6,10 @@ class FollowingsController
   end
 
   def create
-    @user = User.find(params[:id])
-    @following = Following.new(following_params)
+    @user = User.find(params[:follower_id])
+    @following = Following.new(user_id: params[:user_id], follower_id: params[:follower_id])
       if @following.save
-        flash[:notice] = "You're now following #User.find({@following.follower_id})"
+        flash[:notice] = "You're now following #{User.find(@following.user_id).user_name}"
       else
         flash[:notice] = "There was a problem"
       end
@@ -28,8 +28,7 @@ class FollowingsController
 private
 
   def following_params
-    params.require(:following).permit(:user_id, :follower_id)
+    params.require(:follow).permit(:user_id, :follower_id)
   end
-
 
 end
