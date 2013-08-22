@@ -29,4 +29,16 @@
         %p.error= h flash[:error]
       - if flash[:notice]
         %p.notice= h flash[:notice]
-      = yield
+      %div
+        = yield
+      -if !current_user.nil?
+        %br
+        %br
+        %footer
+          =form_tag user_index_path, :method => 'get' do
+            %p 
+              =text_field_tag :search, params[:search]
+              =submit_tag "Search for Users", :name => nil
+
+
+

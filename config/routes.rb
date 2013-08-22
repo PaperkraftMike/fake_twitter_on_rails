@@ -1,7 +1,7 @@
 FakeTwitterOnRails::Application.routes.draw do
   root :to => "home#index"
   resources :user do
-    resources :following 
+    resources :followings 
     resources :tweet 
   end
 
@@ -9,5 +9,4 @@ FakeTwitterOnRails::Application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   post "log_in" => "sessions#create"
   resources :sessions
-
 end

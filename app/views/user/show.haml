@@ -12,18 +12,18 @@
     =tweet.created_at.strftime("%B %d, %Y at %I:%M %p")
     %br
     %br
-    %h3 
-      New Tweet
-    =form_for Tweet.new, :url => user_tweet_index_path(@user) do |f|
-      =f.text_area :text
-      %br
-      %br
-      =f.submit
--else 
+  %h3 
+    New Tweet
+  =form_for Tweet.new, :url => user_tweet_index_path(@user) do |f|
+    =f.text_area :text
+    %br
+    %br
+    =f.submit
+-elsif !current_user.nil? 
   %h1
     =@user.user_name
-  =form_for @following, :url => user_following_index_path(@user) do |f|
-    =f.submit
+  =button_to 'Follow', {:controller => "followings", :action => "create", :user_id => @user.id, :follower_id => session[:user_id]}, :method => :post
+
   %br
   -@user.tweets.each do |tweet|
     =tweet.text
@@ -31,3 +31,16 @@
     =tweet.created_at.strftime("%B %d, %Y at %I:%M %p")
     %br
     %br
+-else
+  %h1
+    =@user.user_name
+  %h3
+    Tweets
+  -@user.tweets.each do |tweet|
+    =tweet.text
+    %br
+    =tweet.created_at.strftime("%B %d, %Y at %I:%M %p")
+    %br
+    %br
+
+

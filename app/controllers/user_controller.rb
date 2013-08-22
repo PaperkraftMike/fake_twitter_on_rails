@@ -6,7 +6,7 @@ class UserController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user = current_user
+      @user.id = session[:user_id]
       flash[:notice] = "Your account was created!"
       redirect_to user_path(@user)
     else
@@ -46,7 +46,7 @@ class UserController < ApplicationController
   end
 
   def index
-
+    @users = User.search(params[:search])
   end
 
 

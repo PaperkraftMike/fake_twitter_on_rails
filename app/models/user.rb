@@ -31,6 +31,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.search(search)
+    if search 
+      find(:all, :conditions => ['first_name LIKE ?', "%#{search}"])
+    end
+  end
+
   has_many :tweets
   has_many :followings
   has_many :followers, :through => :followings

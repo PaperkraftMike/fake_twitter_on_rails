@@ -1,0 +1,18 @@
+%h1 
+  Search
+-@users.each do |user|
+  %h3
+    %a{:href => 'user/' + user.id.to_s} 
+      =user.first_name + " " + user.last_name
+  %h3
+    Bio
+  =user.bio
+  %br
+  %h3
+    Tweets
+  -user.tweets.each do |tweet|
+    =tweet.text
+    %br
+    =tweet.created_at.strftime("%B %d, %Y at %I:%M %p")
+    %br
+    %br
