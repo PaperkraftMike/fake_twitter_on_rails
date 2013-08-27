@@ -8,6 +8,7 @@ gem 'rails', '4.0.0'
 
 
 gem 'pg', :require => 'pg'
+gem 'rails_12factor'
 gem 'haml'
 gem 'haml-rails'
 gem 'bcrypt-ruby', :require => "bcrypt"
