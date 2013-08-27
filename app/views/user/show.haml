@@ -10,10 +10,11 @@
     =tweet.created_at.strftime("%B %d, %Y at %I:%M %p")
     %br
     %br
-  %h3
-    Followings
-  -@user.followings.each do |following|
-    =User.find(following.follower_id.to_s).first_name
+  -if !@user.followings.nil?
+    %h3
+      News Feed
+    -@user.followings.each do |following|
+      =User.find(following.follower_id.to_s).first_name
 
   %h3 
     New Tweet

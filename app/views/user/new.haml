@@ -1,12 +1,13 @@
 %h1 Sign Up For Fake Twitter using Rails
 =form_for @user, :url => user_index_path do |f|
-  -if @user.errors.any? 
-    .error_messages
-      %h2 Form is invalid
+  - if @user.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@user.errors.count, "error")
+        prohibited this user from being saved:
       %ul
-        - for message in @user.errors.full_messages
-          %li
-            =message
+        - @model.errors.full_messages.each do |msg|
+          %li= msg
   =render "form", {f: f}
   
 

@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
 
-  validates_uniqueness_of(:email)
-  validates_uniqueness_of(:user_name)
+  validates_uniqueness_of(:email, :message => "Someone already has this email, try another.")
+  validates_uniqueness_of(:user_name, :message => "This user name is already taken.")
 
   validates_presence_of(:first_name)
   validates_presence_of(:last_name)
