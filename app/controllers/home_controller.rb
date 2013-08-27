@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @user = User.find(session[:user_id])
+    if !current_user.nil?
+      @user = User.find(session[:user_id])
+    end
   end
 end
