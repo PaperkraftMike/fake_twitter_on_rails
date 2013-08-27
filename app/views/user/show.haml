@@ -1,16 +1,20 @@
 -if current_user == @user
   %h1
     =@user.user_name
+  %img{:src => @user.gravatar_url}
   %h3
-    Notifications
-  %h3
-    Tweets
+    Your Tweets
   -@user.tweets.each do |tweet|
     =tweet.text
     %br
     =tweet.created_at.strftime("%B %d, %Y at %I:%M %p")
     %br
     %br
+  %h3
+    Followings
+  -@user.followings.each do |following|
+    =User.find(following.follower_id.to_s).first_name
+
   %h3 
     New Tweet
   =form_for Tweet.new, :url => user_tweet_index_path(@user) do |f|

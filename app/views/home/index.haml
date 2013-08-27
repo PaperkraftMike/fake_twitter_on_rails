@@ -1,5 +1,13 @@
 %h1 
-  Welcome to Fake Twitter
-%h4
-  Where friends don't let friends do drugs
+  Fake Twitter
+-if !current_user.nil?
+  %h4
+    Hi #{@user.user_name}! Here's whats happening.
+  -if !@user.followings.nil? 
+    -@user.followings.each do |following|
+      =User.find(following.user_id) 
+      %br
+  -else
+    %h4
+      Search for some people to follow using the form!
 

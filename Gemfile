@@ -8,6 +8,7 @@ gem 'sqlite3'
 gem 'haml'
 gem 'haml-rails'
 gem 'bcrypt-ruby', :require => "bcrypt"
+gem 'gravtastic'
 
 
 # Use SCSS for stylesheets

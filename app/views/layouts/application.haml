@@ -23,8 +23,6 @@
           -if !current_user.nil?
             %li
               =link_to "Sign Out", log_out_path
-            %li
-              %a{:href => "#"} Friends
       - if flash[:error]
         %p.error= h flash[:error]
       - if flash[:notice]

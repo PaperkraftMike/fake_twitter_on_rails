@@ -1,3 +1,5 @@
+require 'gravtastic'
+
 class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
@@ -11,6 +13,7 @@ class User < ActiveRecord::Base
   validates_presence_of(:city)
   validates_presence_of(:bio)
   validates_presence_of(:password)
+
 
   def encrypt_password
     if password.present?
@@ -36,6 +39,9 @@ class User < ActiveRecord::Base
       find(:all, :conditions => ['first_name LIKE ?', "%#{search}"])
     end
   end
+
+  include Gravtastic
+  gravtastic
 
   has_many :tweets
   has_many :followings
