@@ -5,7 +5,14 @@
     Hi #{@user.user_name}! Here's whats happening.
   -if !@user.followings.nil? 
     -@user.followings.each do |following|
-      =User.find(following.user_id) 
+      %h4
+        =User.find(following.follower_id).user_name
+      -User.find(following.follower_id).tweets.each do |tweet|
+        =tweet.text
+        %br
+        =tweet.created_at.strftime("%B %d, %Y at %I:%M %p")
+        %br
+        %br
       %br
   -else
     %h4

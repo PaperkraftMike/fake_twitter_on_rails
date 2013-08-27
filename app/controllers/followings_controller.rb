@@ -6,10 +6,10 @@ class FollowingsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:follower_id])
-    @following = Following.new(user_id: params[:user_id], follower_id: params[:follower_id])
-      if @following.save
-        flash[:notice] = "You're now following #{User.find(@following.user_id).user_name}"
+    @user = User.find(session[:user_id])
+    @following = Following.new(user_id: session[:user_id], follower_id: params[:user_id])
+      if @following.save && @user.followings << @following
+        flash[:notice] = "You're now following #{User.find(@following.follower_id).user_name}"
       else
         flash[:notice] = "There was a problem"
       end
